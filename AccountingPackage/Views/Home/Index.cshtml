@@ -1,0 +1,67 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@model AccountingPackage.Models.TransRegViewModel
+
+<div class="text-center">
+    <h1 class="display-4">Account Board</h1>
+    <p>Add A New Transaction</p>
+</div>
+
+<form asp-action="Add" method="post" class="form-group">
+    <label class="mt-2">Transactor Name: </label>
+    <input asp-for="Name" type="text" class="form-control" placeholder=" Enter transactor name" />
+
+    <label class="mt-2">Transactor Email: </label>
+    <input asp-for="Email" type="text" class="form-control" placeholder=" Enter transactor email" />
+
+    <label class="mt-2">Transaction Date: </label>
+    <input asp-for="Date" type="text" class="form-control" placeholder="DD/MM/YYYY" />
+
+    <label class="mt-2">Transaction Amount: </label>
+    <input asp-for="Amount" type="text" class="form-control" placeholder=" Enter transactoion amount" />
+    
+    
+    <div class="mt-2">
+        <label>Credit ?</label>
+        <select asp-for="Credit">
+            <option value="yes">Yes</option>
+            <option value="yo">No</option>
+        </select>
+    </div>
+
+    <div class="w-100 d-flex justify-content-end mt-4">
+        <button type="submit" class="btn btn-info">Add Transaction</button>
+    </div>
+
+</form>
+
+<div class="w-100 d-flex justify-content-end mt-4 btn-group">
+    <a asp-action="All" class="btn btn-outline-info">View all Tranctions</a>
+    <a asp-action="Debtors" class="btn btn-outline-danger ">View all Debtors</a>
+</div>
+
+<div class="mt-4">
+    <h4>View Transaction By Month</h4>
+    <form asp-action="TransactionsByDate" method="post">
+        <input class="form-control" type="text" asp-for="Date" placeholder="MM/YYYY" />
+        <input hidden value="" type="text" asp-for="Email" placeholder="MM/YYYY" />
+        <input hidden value="" type="text" asp-for="Amount" placeholder="MM/YYYY" />
+        <input hidden value="" type="text" asp-for="Credit" placeholder="MM/YYYY" />
+        <input hidden value="" type="text" asp-for="Name" placeholder="MM/YYYY" />
+        <button class="btn btn-outline-info mt-2" type="submit">View</button>
+    </form>
+</div>
+
+<div class="mt-4">
+    <h4>Customer's Transaction By Month</h4>
+    <form asp-action="DebtorsTransactionsByDate" method="post">
+        <input class="form-control mt-2" type="text" asp-for="Date" placeholder="MM/YYYY" />
+        <input class="form-control mt-2" type="text" asp-for="Email" placeholder="Enter Debtor Email" />
+        <input hidden value="" type="text" asp-for="Amount" placeholder="MM/YYYY" />
+        <input hidden value="" type="text" asp-for="Credit" placeholder="MM/YYYY" />
+        <input hidden value="" type="text" asp-for="Name" placeholder="MM/YYYY" />
+        <button class="btn btn-outline-info mt-2" type="submit">View</button>
+    </form>
+</div>
